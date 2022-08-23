@@ -35,12 +35,12 @@ public class countLastLetter {
 					indexS = sentencearry.indexOf(word2);
 				}
 			}
-			//Collections.swap(sentencearry, indexY, indexS);
+		}
+			Collections.swap(sentencearry, indexY, indexS);
 			for(String words2: sentencearry) {
-				System.out.println(words2);
+				System.out.print(words2 + " ");
 				//keeps doubling the output for some reason at this point
 			}
-		}
 	}
 
 }
