@@ -1,3 +1,4 @@
+package exercises;
 import java.util.*;
 public class Registration {
 	
