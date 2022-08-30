@@ -1,59 +1,23 @@
-package exercises;
-import java.util.*;
+package registration;
+import java.util.Scanner;
 
-import org.junit.Test;
-public class Registration {
-	
+public class newUserCreation {
 	private String firstName = null;
 	private String lastName = null;
-	private int phoneNumber = -1;
+	private String phoneNumber = null;
 	private String email = null;
 	private String userName = null;
 	private int age = -1;
 	Scanner scnr = new Scanner(System.in);
-	
-	public Registration(String firstName, String lastName, int phoneNumber, String email, String userName, int age){
+
+	public newUserCreation(String firstName, String lastName, String phoneNumber, String email, String userName, int age){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.userName = userName;
 		this.age = age;
-		
-	}
-	
-	String email() {
-		System.out.println("Enter your email.");
-		email = scnr.nextLine();
-		return email;
-	}
-	
-	
-	String userName() {
-		System.out.println("Type a username.");
-		userName = scnr.nextLine();
-		if(userName.length() < 8) {
-			System.out.println("Needs to be longer.");
-		}
-		if(userName.length() > 24) {
-			System.out.println("Needs to be shorter.");
-		}
-		return userName;
-	}
-	@Test
-	int age() {
-		do {
-		System.out.println("Please enter your age!");
-		age = scnr.nextInt();
-		if(age < 18) {
-			System.out.println("Sorry, you're to young to sign up.");
-		}
-		if(age > 111) {
-			System.out.println("Age out of bounds.");
-		}
-	}	
-		while(age == -1);
-		return age;
+
 	}
 
 	public String getFirstName() {
@@ -72,11 +36,11 @@ public class Registration {
 		this.lastName = lastName;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -102,5 +66,5 @@ public class Registration {
 
 	public void setAge(int age) {
 		this.age = age;
-	}	
+	}
 }
