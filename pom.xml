@@ -8,6 +8,12 @@
     <version>4.13.2</version>
     <scope>test</scope>
 </dependency>
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.28</version>
+</dependency>
+
   </dependencies>
   <groupId>Java-SDET-Training-Assignments</groupId>
   <artifactId>Java-SDET-Training-Assignments</artifactId>

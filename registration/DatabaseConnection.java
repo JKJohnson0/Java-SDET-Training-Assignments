@@ -11,7 +11,7 @@ public class DatabaseConnection {
 		
 		// TODO Auto-generated method stub
 	    final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-	    final String DB_URL = "jdbc:mysql://awsmyql.cjcwogjvz1yx.us-west-1.rds.amazonaws.com:3306/Users";
+	    final String DB_URL = "jdbc:mysql://database-1.cvjxwnkisjb7.us-east-1.rds.amazonaws.com:3306/users";
 	    final String USER = "admin";
 	    final String PASS = "admin123";
 	    
@@ -33,7 +33,7 @@ public class DatabaseConnection {
 		                   " lastName VARCHAR(255), " + 
 		                   " age INTEGER(30));"; 		     		      
 		      System.out.println(sql);
-		     // stmt.executeUpdate(sql);
+		      stmt.executeUpdate(sql);
 		      System.out.println("Created table in given database...");
 			
 		} catch (SQLException | ClassNotFoundException e) {
