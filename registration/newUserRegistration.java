@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 class newUserRegistration {
 	Scanner scnr = new Scanner(System.in);
-
+	NewUserDAO dao = new NewUserDAO();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		newUserCreation user = new newUserCreation(null, null, null, null, null, 0);
@@ -21,7 +21,8 @@ class newUserRegistration {
 		user.setUserName(method.userName());
 		//age
 		user.setAge(method.age());
-
+		
+		
 
 	}
 

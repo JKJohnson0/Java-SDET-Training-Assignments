@@ -7,21 +7,21 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class NewUserDAO {
-
 	newUserCreation user = new newUserCreation(null, null, null, null, null, 0);
-
+	
 	final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	final String DB_URL = "jdbc:mysql://database-2.cvjxwnkisjb7.us-east-1.rds.amazonaws.com:3306/newUsers";
 	final String USER = "admin";
 	final String PASS = "admin123";
+	
+	Connection conn = null;{
 
-	Connection conn = null;
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		System.out.println("Connecting to database...");
 
 		conn = DriverManager.getConnection(DB_URL,USER,PASS);
-
+		
 		PreparedStatement ps = conn.prepareStatement("INSERT INTO newUsers (FirstName, LastName, PhoneNumber, Email, UserName, Age) VALUES (?, ?, ?, ?, ?, ?)");
 		//what are the different kinds of prepared statements
 		ps.setString(1, user.getFirstName());
@@ -39,4 +39,5 @@ public class NewUserDAO {
 		e.printStackTrace();
 	}
 
+}
 }
