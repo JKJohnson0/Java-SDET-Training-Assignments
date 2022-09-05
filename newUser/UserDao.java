@@ -1,9 +1,10 @@
 package newUser;
 
 import java.sql.*;
+import java.util.HashMap;
 
 public class UserDao {
-	
+
 	Userobject user = new Userobject(null, null, null, null, null, 0);
 
 	final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
@@ -19,11 +20,11 @@ public class UserDao {
 			System.out.println("Connecting to database...");
 
 			conn = DriverManager.getConnection(DB_URL,USER,PASS);
-			
+
 			System.out.println("Connected.");
-			
+
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO newUsers (FirstName, LastName, PhoneNumber, Email, UserName, Age) VALUES (?, ?, ?, ?, ?, ?)");
-		     		      
+
 			ps.setString(1, user.getFirstName());
 			ps.setString(2, user.getLastName());
 			ps.setString(3, user.getPhoneNumber());
@@ -32,13 +33,45 @@ public class UserDao {
 			ps.setInt(6, user.getAge());
 			System.out.println(ps);
 			ps.execute();
-			
+
 			System.out.println("All items successfully added.");
-			
+
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
+
+	public void seeAllSQL() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("Connecting to database...");
+
+			conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			System.out.println("Connected.");
+			
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM 			newUsers");
+			ResultSetMetaData rsmd = resultSet.getMetaData();
+			int columnsNumber = rsmd.getColumnCount();
+			while (resultSet.next()) {
+			    for (int i = 1; i <= columnsNumber; i++) {
+			        if (i > 1) System.out.print(",  ");
+			        String columnValue = resultSet.getString(i);
+			        System.out.print(columnValue);
+			    }
+			    System.out.println("");
+			}
+
+
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateSQL() {
+		
+	}
+	
 
 
 }

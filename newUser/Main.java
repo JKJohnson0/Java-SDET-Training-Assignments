@@ -34,6 +34,7 @@ public class Main {
 					dao.insertSQL(user);
 					break;
 				case 2:
+					dao.seeAllSQL();
 					break;
 				case 3:
 					break;
