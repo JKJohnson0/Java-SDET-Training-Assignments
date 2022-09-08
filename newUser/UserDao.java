@@ -48,18 +48,18 @@ public class UserDao {
 
 			conn = DriverManager.getConnection(DB_URL,USER,PASS);
 			System.out.println("Connected.");
-			
+
 			Statement statement = conn.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM 			newUsers");
 			ResultSetMetaData rsmd = resultSet.getMetaData();
 			int columnsNumber = rsmd.getColumnCount();
 			while (resultSet.next()) {
-			    for (int i = 1; i <= columnsNumber; i++) {
-			        if (i > 1) System.out.print(",  ");
-			        String columnValue = resultSet.getString(i);
-			        System.out.print(columnValue);
-			    }
-			    System.out.println("");
+				for (int i = 1; i <= columnsNumber; i++) {
+					if (i > 1) System.out.print(",  ");
+					String columnValue = resultSet.getString(i);
+					System.out.print(columnValue);
+				}
+				System.out.println("");
 			}
 
 
@@ -67,11 +67,45 @@ public class UserDao {
 			e.printStackTrace();
 		}
 	}
-	
-	public void updateSQL() {
-		
+
+	public void updateSQL(String name) {
+		try {
+		    PreparedStatement ps = null;
+			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("Connecting to database...");
+
+			conn = DriverManager.getConnection(DB_URL,USER,PASS);			
+			
+	         String query = "update DemoTable set FirstName=? where FirstName=? ";
+	         ps = conn.prepareStatement(query);
+	         ps.setString(1, "Tom");
+	         ps.setString(2, name);
+	         ps.executeUpdate();
+	         System.out.println("Record is updated successfully......");
+			
+
+		}catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
+		public void deleteSQL(String name) {
+			try{
+				Class.forName("com.mysql.jdbc.Driver");
+				System.out.println("Connecting to database...");
+
+				conn = DriverManager.getConnection(DB_URL,USER,PASS);	
+				Statement statement = conn.createStatement();{
+					String SQL = "DELETE FROM newUsers WHERE FirstName = '"+name+"' ";
+					statement.executeUpdate(SQL);
+					conn.close();
+				}
+
+			} catch (SQLException | ClassNotFoundException e) {
+				e.printStackTrace();
+			}
 
 
-}
+
+		}
+	}
