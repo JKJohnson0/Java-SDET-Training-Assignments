@@ -37,8 +37,14 @@ public class Main {
 					dao.seeAllSQL();
 					break;
 				case 3:
+					System.out.println("Select a first name you would to replace");
+					String name = s.nextLine();
+					dao.updateSQL(name);
 					break;
 				case 4:
+					System.out.println("Enter a first name you want to delete.");
+					String Name = s.nextLine();
+					dao.deleteSQL(Name);
 					break;
 				case 5:
 					System.out.println("Closing application.");
